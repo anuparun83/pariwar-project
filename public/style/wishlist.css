@@ -1,0 +1,105 @@
+
+        .fa-trash {
+            margin-left: 8.6rem;
+            margin-bottom: 3.5rem;
+            color: red;
+            cursor: pointer;
+
+        }
+
+        .widhimG {
+            width: 5.5rem;
+            height: 6.7rem;
+            border-radius: 7%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .ratinG {
+            line-height: normal;
+            display: inline-block;
+            color: #fff;
+            padding: 1px 4px 0px 5px;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 11px;
+            vertical-align: middle;
+            background-color: #388e3c;
+        }
+
+        .ratCNT {
+            font-size: 11px;
+            margin-bottom: 2rem;
+            margin-left: 0.05rem
+        }
+
+        .lineTHr {
+
+            text-decoration: line-through;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .max-w-7xl {
+            max-width: 65rem;
+        }
+        @media only screen and (max-width: 530px) {
+            .screenFLE{
+            display: flex;
+            flex-direction: column;
+            justify-content:right;
+        }
+        .puRA{
+            display: flex;
+            /* justify-content: right; */
+        }
+        .btnDT{
+            display: flex !important;
+            flex-direction: column!important;
+            
+        }
+        .imageSC{
+            margin-top: 0% !important;
+            display: flex;
+            justify-content:start;
+            margin-bottom: 1rem;
+            margin-left: -5rem;
+        }
+        #imgscreen{
+            margin-top: 0% !important;
+        }
+        .cartBG{
+            font-size: 11px;
+            /* margin-bottom: 12rem !important; */
+            margin: -1rem;
+        }
+        .fa-trash {
+            margin-left: 4rem;
+            margin-bottom: 0.5rem;
+            color: red;
+            cursor: pointer;
+        }
+        }
+
+        .dcoFF {
+            font-weight: 700;
+        }
+
+        .cartBG {
+            background-color: #ff9f00;
+           
+            margin: 1rem;
+        }
+
+        .cartBG:hover {
+            background-color: #ee9b15;
+        }
+        .fa-shopping-cart{
+            margin-right: 1rem;
+        }
+        /* Custom styles here */
+        .wishMG{
+            margin-top: calc(80px);
+            /* margin-top: calc(2rem); */
+        }
+    

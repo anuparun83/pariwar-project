@@ -1,0 +1,434 @@
+
+<%- include("layout") -%>
+<link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<style>
+    .bx{
+   font-size: 2rem;
+    }
+</style>
+
+<body>
+ <!-- header section ends -->
+
+ <!-- home section starts  -->
+
+ <section class="home" id="home">
+
+    <div class="swiper home-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide" style="background:url(images/banner1.jpg) no-repeat">
+                <div class="content">
+                    <span>upto 50% off usecode: JATIN69</span>
+                    <h3>women's Fashion</h3>
+                    <a href="/product" class="btn">shop now</a>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide" style="background:url(images/banner2.jpg) no-repeat">
+                <div class="content">
+                    <span>upto 50% off usecode: JATIN69</span>
+                    <h3>men's Fashion</h3>
+                    <a href="/product" class="btn">shop now</a>
+                </div>
+            </div>
+            <div class="swiper-slide slide" style="background:url(images/banner-3.png) no-repeat">
+                <div class="content">
+                    <span>upto 50% off usecode: JATIN69</span>
+                    <h3>kid's Fashion</h3>
+                    <a href="/product" class="btn">shop now</a>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+ </section>
+
+<!-- home section ends -->
+
+<!-- banner section starts  -->
+
+<section class="banner-container">
+
+    <div class="banner">
+        <img src="https://images.pexels.com/photos/15591205/pexels-photo-15591205/free-photo-of-fashion-woman-girl-purple.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="">
+        <div class="content">
+            <span>special offer</span>
+            <h3>upto 50% off</h3>
+            <a href="/product" class="btn">shop now</a>
+        </div>
+    </div>
+    
+    <div class="banner">
+        <img src="https://cdn.pixabay.com/photo/2016/11/29/07/16/balancing-1868051_640.jpg" alt="">
+        <div class="content">
+            <span>special offer</span>
+            <h3>upto 50% off</h3>
+            <a href="/product" class="btn">shop now</a>
+        </div>
+    </div>
+
+</section>
+
+<!-- banner section ends -->
+
+<!-- products section starts  -->
+
+<section class="products" id="products">
+    <h1 class="heading">exclusive <span>products</span></h1>
+
+    <div class="filter-buttons">
+        <div class="buttons active" data-filter="all">all</div>
+        <div class="buttons" data-filter="arrivals">new arrivals</div>
+        <div class="buttons" data-filter="featured">mens</div>
+        <div class="buttons" data-filter="special">womens</div>
+        <div class="buttons" data-filter="seller">kids</div>
+    </div>
+
+    <div class="box-container">
+        <% products.forEach(function(product) { %>
+        <div class="box" data-item="<%= product.category %>">
+            <div class="icons">
+                <form action="/cart" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="id" value="<%= product._id %>">
+                    <button class=" HOVExtra " type="submit"><i  class=" fas fa-shopping-cart HOVExtra"></i></button>
+                </form>
+                <form action="/addToWishlist" method="post" >
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="id" value="<%= product._id %>">
+                    <button type="submit" class="HOVExtra fas fa-heart"></button>
+                </form>
+                
+                <a href="#" class="fas fa-search"></a>
+                <a href="/product/<%= product._id %>" class="fas fa-eye"></a>
+            </div>
+            <div class="image">
+                <img src="<%= product.imageUrl %>" alt="">
+            </div>
+            <div class="content">
+                <h3><%= product.name %></h3>
+                <div class="price">
+                    <div class="amount">₹ <%=(product.price)-(product.price*(.22)).toFixed(0) %></div>
+                    <div class="cut">₹<%= product.price %></div>
+                    <div class="offer">23% off</div>
+                </div>
+                <div class="stars">
+                    
+                    <% for(var i =1; i <=(Math.floor(Math.random() * 2) + 3);  i++ ) { %>
+                    <i class="bx bx-star"></i>
+                    <% } %>
+                    <i class=" bx bxs-star-half"></i>
+                    <span>(<%= (Math.floor(Math.random() * 1900) + 700) %>)</span>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</section>
+
+<!-- products section ends -->
+
+<!-- deal section starts  -->
+
+<section class="deal">
+
+    <div class="image">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z2lybCUyMHN1bW1lcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="">
+    </div>
+
+    <div class="content">
+        <span>new season trending!</span>
+        <h3>best summer collection</h3>
+        <p>sale get up to 50% off</p>
+        <a href="product" class="btn">shop now</a>
+    </div>
+
+</section>
+
+<!-- deal section ends -->
+
+<!-- featured section starts  -->
+
+<section class="featured" id="featured">
+    <h1 class="heading"> <span>featured</span> products </h1>
+    <div class="swiper featured-slider">
+      <div class="swiper-wrapper">
+        <% products.forEach((product) => { %>
+        <div class="swiper-slide slide">
+          <div class="icons">
+            <form action="/cart" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="id" value="<%= product._id %>">
+                <button class=" HOVExtra " type="submit"><i  class=" fas fa-shopping-cart HOVExtra"></i></button>
+            </form>
+            <form action="/addToWishlist" method="post" >
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="id" value="<%= product._id %>">
+                <button type="submit" class="HOVExtra fas fa-heart"></button>
+            </form>
+            
+            <a href="#" class="fas fa-search"></a>
+            <a href="product/<%=product._id%>" class="fas fa-eye"></a>
+          </div>
+          <div class="image">
+            <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+          </div>
+          <div class="content">
+            <h3><%= product.name %></h3>
+            <div class="price">
+              <div class="amount">₹<%= (product.price)-(product.price*(.22)).toFixed(0)  %></div>
+              <div class="cut">₹<%= product.price %></div>
+              <div class="offer"><%= (Math.floor(Math.random() * 4) + 19)%>% off</div>
+            </div>
+            <div class="stars">
+              
+              <% for(var i =1; i <=(Math.floor(Math.random() * 2) + 3);  i++ ) { %>
+              <i class="bx bx-star"></i>
+              <% } %>
+              <i class=" bx bxs-star-half"></i>
+              <span>(<%= (Math.floor(Math.random() * 2000) + 900) %>)</span>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+</section>
+  
+
+<!-- featured section ends -->
+
+<!-- reviews section starts  -->
+
+<section class="review" id="review">
+
+    <h1 class="heading"> client's <span>review</span> </h1>
+
+    <div class="swiper review-slide">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur veniam deserunt praesentium natus quibusdam ea nam commodi.</p>
+                <div class="user">
+                    <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+                    <div class="info">
+                        <h3>Hiyat afrin</h3>
+                        <span>happy client</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur veniam deserunt praesentium natus quibusdam ea nam commodi.</p>
+                <div class="user">
+                    <img src="https://images.pexels.com/photos/343717/pexels-photo-343717.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+                    <div class="info">
+                        <h3>harsh</h3>
+                        <span>happy client</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur veniam deserunt praesentium natus quibusdam ea nam commodi.</p>
+                <div class="user">
+                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300" alt="">
+                    <div class="info">
+                        <h3>Nancy mnld</h3>
+                        <span>happy client</span>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide slide">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur veniam deserunt praesentium natus quibusdam ea nam commodi.</p>
+                <div class="user">
+                    <img src="images/pic-1.png" alt="">
+                    <div class="info">
+                        <h3>yash</h3>
+                        <span>happy client</span>
+                    </div>
+                </div>
+            </div>
+
+          
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- reviews section ends -->
+
+<!-- blogs  section starts  -->
+
+<section class="blogs" id="blogs">
+    
+    <h1 class="heading"> our <span>blogs</span></h1>
+
+    <div class="swiper blogs-slider">
+
+        <div class="swiper-wrapper">
+
+            
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/blog.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>blog title goes here</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore.</p>
+                    <a href="#" class="btn">read more</a>
+                    <div class="icons">
+                        <a href="#"> <i class="fas fa-calendar"></i> 2nd may, 2023 </a>
+                        <a href="#"> <i class="fas fa-user"></i> by anshu priya </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="https://plus.unsplash.com/premium_photo-1661779036759-1315648cce09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdvc3NpcCUyMGdpcmx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                </div>
+                <div class="content">
+                    <h3>blog title goes here</h3>
+                    <p>Lorem Best Best Best Best Best Best BEst Best. Dolore.</p>
+                    <a href="#" class="btn">read more</a>
+                    <div class="icons">
+                        <a href="#"> <i class="fas fa-calendar"></i> 25st may, 2023 </a>
+                        <a href="#"> <i class="fas fa-user"></i> by anshika </a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1lbiUyMHdpdGglMjBsYXB0b3B8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                </div>
+                <div class="content">
+                    <h3>blog title goes here</h3>
+                    <p>Lorem Best Best Best Best Best Best BEst Best. Dolore.</p>
+                    <a href="#" class="btn">read more</a>
+                    <div class="icons">
+                        <a href="#"> <i class="fas fa-calendar"></i> 25st may, 2023 </a>
+                        <a href="#"> <i class="fas fa-user"></i> by millind </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- blogs  section ends -->
+
+<!-- footer section starts  -->
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="share1">
+          <div class="box">
+            <h3>Get to Know Us</h3>
+            <a href="">About us</a>
+            <a href="">Contact us</a>
+            <a href="">Master plan</a>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nesciunt!</p> -->
+            
+          </div>
+          <h2 class="touch">Get in touch</h2>
+          <div class="share">
+            <a href="#"  style="color:#1877F2 ;" class="fab fa-facebook-f"></a>
+            <a href="#" style="color: #00acee;" class="fab fa-twitter"></a>
+            <a href="#" style="color:  #c8232c;" class="fab fa-pinterest"></a>
+            <a href="#" style="color: #0072b1;" class="fab fa-linkedin"></a>
+            <a href="#" style="color:  #E4405F ;" class="fab fa-instagram"></a>
+          </div>
+        </div>
+
+        <div class="box">
+            <h3>category</h3>
+            <a href="#">men wear</a>
+            <a href="#">women wear</a>
+            <a href="#">kids wear</a>
+            <a href="#">best seller </a>
+            <a href="#">new arrivals/trends </a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="/">home/back to Top </a>
+            <a href="/product">products </a>
+            <a href="/account">my account </a>
+            <a href="/wishlist">my Wishlist </a>
+            <a href="#">Help Center</a>
+            <a href="#">blogs </a>
+            
+        </div>
+        
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#">my order </a>
+            <a href="#">Return policy</a>
+            <a href="#">Sell on Pariwar</a>
+            <a href="#">Advertise Product</a>
+        </div>
+
+    </div>
+
+    
+
+    <div class="credit"> &copy; copyright 2023 by <span>pariwar.com All right Reserved !</span> </div>
+    
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link -->
+<script src="/js/index1.js"></script>
+
+</body>
+</html> 

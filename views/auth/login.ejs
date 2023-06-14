@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pariwar.com</title>
+  <link rel="stylesheet" href=
+"https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity=
+"sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/style/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+  <style>
+    .fa-google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #ffbf00 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-size: 23px;
+}
+   .error{
+    color: aliceblue;
+    
+  }
+  .error{
+  background: #c51244 !important;
+  padding: 3px !important;
+  border-radius: 2px !important;
+  position: relative; 
+  display: inline-block !important;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 4px;
+  font-size: 12px;
+  font-family: sans-serif;
+  /* height: 1rem; */
+}
+/* .error:before{
+  content: '';  
+  width: 0;  
+  height: 0;  
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #c51244;
+  position: absolute;  
+  top: 20px; 
+} */
+.error:after{
+  color: #c51244 !important;
+}
+.error input{ 
+  background: #fff0f4; 
+  color: #c51244;
+}
+.error input{ 
+  border: 1px solid #c51244 !important; 
+}
+.otherLogin{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.text-muted::before,
+.text-muted::after {
+    display: inline-block;
+    content: "";
+    border-top: 1px solid black;
+    width: 25%;
+    margin: .2rem 0.4rem;
+    /* transform: translateY(-1rem); */
+}
+.centerG{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+#btngooglE{
+ 
+  border: 1px solid black;
+  width: fit-content;
+  text-align: center;
+  justify-content: center;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+#btngooglE:hover{
+  background-color:#f1f2f3;
+}
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row justify-content-center align-items-center" style="height:100vh;">
+      <div class="col-md-6 login-container">
+        <h3 class="text-center">Login</h3>
+        <% if (error==0) { %>
+          <p class="error" >Invalid Email or Password </p>
+        <% } %>
+        <form method="post" action="/login">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <div class="mb-3">
+            <label for="email" class="form-label">User Email Address</label>
+            <input type="text" class="form-control" id="username" name="email" placeholder="Enter your Email abc@123.com" required="">
+          </div>
+          <%if(error==1){%>
+           <p class="error">ENter valid Email</p> 
+           <%}%>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required="">
+          </div>
+          <label>Enter Captcha:</label>
+          <div class="form-row flex">
+         
+              <input type="text" class="capcH" id="textinput">
+              <input type="text" class="capcH coNcap " readonly id="capt" onselectstart="return false" oncontextmenu="return false" style="text-decoration: line-through dashed;">
+              <i class="fas fa-sync" onclick="cap()"></i>
+            
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe" style="color: #7d2ae8;">Remember Me</label>
+          </div>
+          <button type="submit" onclick="validcap()" class="btn btn-primary login-button " style="background-color: #7d2ae8 ;" id="HOVLOGIN">Login</button>
+          <div class="login-options">
+            <a href="/forgetPassword" class="text-decoration-none HOVLInk" style="color: #7d2ae8;" id="HOVLInk">Forgotten password?</a>
+            <a href="/signup" class="text-decoration-none HOVLInk" style="color: #7d2ae8;" id="HOVLInk">New User? create account</a>
+            
+          </div>
+            <div class="otherLogin">
+              <span class="text-muted">Or log in with:</span>
+              <div class="centerG">
+               <a href="/auth/google" class="btn btn-social btn-google" id="btngooglE">
+                 <i  class="fab fa-google "></i>
+                 &nbsp&nbspCountinue with Google
+               </a>
+              </div>
+               
+        </form>
+      </div>
+      
+      <!-- <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <a class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
+              <i class="fab fa-google"></i>
+              Sign Up with Google
+            </a>
+          </div>
+      
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function cap() {
+      var alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*+';
+      var captcha = "";
+      for (var i = 0; i < 6; i++) {
+        captcha += alpha.charAt(Math.floor(Math.random() * alpha.length));
+      }
+      document.getElementById("capt").value = captcha;
+    }
+
+    function validcap() {
+      var stg1 = document.getElementById('capt').value;
+      var stg2 = document.getElementById('textinput').value;
+      if (stg1 === stg2) {
+        
+        // Add form submission logic here
+      } else {
+        alert("Please enter a valid captcha");
+      }
+    }
+
+    // Generate captcha on page load
+    cap();
+  </script>
+
+</body>
+</html

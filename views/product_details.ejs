@@ -1,0 +1,238 @@
+<%- include("header") -%>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+<link href="/style/productdet.css" rel="stylesheet">
+<link href="/style/header.css" rel="stylesheet">
+<link href="/style/footer.css" rel="stylesheet">
+
+  <!-- <style> -->
+    
+<!--   
+.highlight {
+	display: inline-block;
+	color: #fff;
+	line-height: 1.1em;
+	padding: 2px 10px 2px 15px;
+	border-radius: 4px;
+}
+.red-bg {
+	background: #CC0C39;
+    color: #ffffff;
+}
+.fa{
+  color: rgb(20, 157, 20);
+}
+#lineTHr{
+
+  text-decoration: line-through;
+}
+#nameItem{
+  color: #fe980f;
+    font-size: 36px;
+    font-weight: bold;
+}
+.colourBg{
+  background-color: #ff9f00
+}
+.colourBg:hover{
+  background-color: #e5981c
+}
+.cartBG:hover{
+  background-color: #098d09;
+}
+.heart-checkbox:checked + .heart-label {
+      color: red;
+    }
+
+input,select{
+      border: 1px solid black;
+      border-radius: 3px;
+    }
+  .fa-shopping-cart{
+    color: #fff;
+    margin-right: 6px;
+  }
+  .fa-tags{
+    color: #3a3af2;
+  }
+  .brand{
+    background: #008000;
+    width: fit-content;
+    color: #fff;
+    font-size: 10px;
+    padding: 1px 3px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.buyNow{
+  width: fit-content;
+  margin-left: 5.5rem;
+}
+.buyNow:hover{
+  width: fit-content;
+  background-color: #188918;
+  text-decoration: none;
+  
+}
+.w-72 {
+    width: 23rem;
+    border: 2px solid black;
+    border-radius: 4px;
+    --webkit-box-shadow: -8px -8px 5px -3px rgba(94,81,94,1);
+-moz-box-shadow: -8px -8px 5px -3px rgba(94,81,94,1);
+box-shadow: -8px -8px 5px -3px rgba(94,81,94,1);
+
+}
+.h-20 {
+  border: 1px solid black;
+  /* box-shadow: -8px -8px 2px -1px rgba(94,81,94,1); */
+    height: 6rem;
+    box-shadow: 2px 2px rgb(87, 81, 81);
+   
+}
+@media only screen and (max-width: 1050px) {
+  .gap-8 {
+      gap: 1rem;
+  }
+  
+}
+.underLine{
+  
+  border-bottom: 1.5px solid #000;
+  padding-bottom: 3rem;
+}  -->
+
+    
+<!-- </style>  -->
+ 
+
+<body>
+  <div class="container mx-auto p-8 marGTP">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 underLine">
+      <div class="w-full">
+        <div class="flex justify-center items-center mt-8">
+          <img src="/<%= product.imageUrl %>" alt="" class="w-72 h-100 object-contain" id="imagebox">
+          
+        </div>
+        <div class="mt-4 flex justify-center items-center space-x-4">
+          <% for (var i =1; i <=4;  i++ ) { %>
+             <img src="/<%= product.imageUrl %>" alt="" class="w-18 h-20 object-contain cursor-pointer" onclick="clickimg(this)"> 
+            
+            <% } %>
+            
+        </div>
+      </div>
+      <div class="flex flex-col justify-center">
+        <p class="brand">Brand: Varanga</p>
+        <div class="btnFLEX flex items-center space-x-8 mb-4">
+          <h1 class="text-3xl font-bold mb-4" id="nameItem"><%= product.name %></h1>
+          <div class="highlight red-bg ribbon mb-4 "> 22% off </div>
+
+        </div>
+         
+         
+         
+        <div class="flex items-center space-x-2 mb-2">
+          <span class="text-lg font-bold text-black-500" id>Rs. <%=(product.price)-(product.price*(.22)).toFixed(2) %></span>
+          <span class="text-lg font-midbold text-gray-500" id="lineTHr">Rs.<%= product.price %></span>
+          <span class="text-gray-500">(Inclusive of all taxes)</span>
+        </div>
+         <div class="mb-0 flex items-center  ">
+          <% for (var i =1; i <=(Math.floor(Math.random() * 2) + 3);  i++ ) { %>
+            <i class="fa fa-star"></i> 
+            <% } %>
+            <i class="fa fa-star-half-o "></i>
+            <p class="ml-2 space-x-2"><%=(Math.floor(Math.random() * 3100) + 2300)%> Rating& <%=(Math.floor(Math.random() * 1400) + 900)%>Review</p>
+         </div>
+        <div class="mb-2">
+          <h2 class="text-xl font-bold mb-2">Specifications</h2>
+          <ul>
+            <div class="flex items-center space-x-2 mb-0">
+              <span class="text-lg font-midbold text-black-500">Shape:</span>
+              <span class="text-gray-500">Fit and Flare</span>
+            </div>
+            <div class="flex items-center space-x-2 mb-0">
+              <span class="text-lg font-midbold text-black-500">Type of Fabric:</span>
+              <span class="text-gray-500"> Cotton 100%</span>
+            </div>
+            <div class="flex items-center space-x-2 mb-0">
+              <span class="text-lg font-midbold text-black-500">Return|Exchange :</span>
+              <span class="text-gray-500"> Within 10 days</span>
+            </div>
+            <div class="flex items-center space-x-2 mb-0">
+             
+              <span class="text-gray-500"> Try & Buy might be available</span>
+            </div>
+            <div class="flex flex-col  space-x-2 mb-0">
+              <span class="text-lg font-midbold text-blue-600">Available Offers :<i class="fa fa-tags ml-4"></i></span>
+              <span class="text-gray-500"><b>Bank Offer</b> :Flat ₹4,000 Off on HDFC Bank Credit Card EMI Transactions on orders of ₹50,000 and aboveT&C</span>
+              <span class="text-gray-500 flex flex-col"><b>Bank Offer :</b> 2x cashback upto Rs 500 or Flat Rs 150 Cashback for select users on CRED pay UPI
+                <p class="ml-4 font-light">Min Spend Rs 1,000. Available only on Android Devices.</p></span>
+              <span class="text-black-500"><b class="text-black-500">Special Price: </b>Get extra 13% off (price inclusive of cashback/coupon)</span>
+            </div>
+          </ul>
+        </div>
+        <div class="mb-4">
+          <h2 class="text-xl font-bold mb-2">Product Description</h2>
+          <p><%= product.description %></p>
+          <p> <b>Size:</b> <select name="size" class="mb-2">
+
+            <option value="select size">select size</option>
+            <option value="small">S</option>
+            <option value="medium">M</option>
+            <option value="large">L</option>
+            <option value="large">XL</option>
+            <option value="large">XXL</option>
+            
+
+           </select></p>
+           <p class="mb-1"><b>Quantity:</b> <input type="number" min="1" max="19" value="1"></p>
+        </div>
+        <div class="btnFLEX flex items-center space-x-2 mb-2">
+            <form action="/addToWishlist" method="post" class="mb-4">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" name="id" value="<%= product._id %>">
+              <button type="submit" class="colourBg text-white py-2 px-4 rounded-md">Add to Wishlist</button>
+            </form>
+            <form action="/cart" method="post">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" name="id" value="<%= product._id %>">
+              <button type="submit" class="bg-green-800 text-white py-2 px-4 rounded-md mb-4 cartBG"><i style="color: #fff;" class=" fa fa-shopping-cart"></i>Add to Cart</button>
+            </form>
+        </div>
+        <!-- <form action="/buy" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="hidden" name="id" value="<%= product._id %>">
+          <button type="submit" class="bg-green-800 text-white py-2 px-4 rounded-md ">Buy Now </button>
+        </form> -->
+        <form action="/addToWishlist" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="hidden" name="id" value="<%= product._id %>">
+          
+          <input id="wishlistToggle" type="checkbox" name="wishlistToggle" onchange="this.form.submit()" checked="<%= isProductInWishlist %>">
+          <label for="wishlistToggle">❤</label>
+        </form>
+        
+        <a href="/buyNow/<%= product._id %>" class="bg-green-800 text-white py-2 px-4 rounded-md buyNow">BUY NOW</a>
+      </div>
+    </div>
+
+    <div class="mt-16" >
+      <h2 class="text-2xl font-bold mb-4 ml-8">Related Products</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+       
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    function clickimg(smallImg) {
+      var fullImg = document.getElementById("imagebox");
+            fullImg.src = smallImg.src;
+    }
+  </script>
+</body>
+<%- include("footer") -%>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter OTP</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .countdown {
+      animation: countdown 270s steps(271, end) forwards;
+    }
+
+    @keyframes countdown {
+      from {
+        width: 100%;
+      }
+
+      to {
+        width: 0%;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
+      <h1 class="text-3xl font-bold text-center mb-6">Enter OTP</h1>
+      <p class="text-gray-700 text-center mb-6">Please enter the 6-digit OTP sent to your email address.</p>
+      <form class="mb-6">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="otp">OTP</label>
+          <input class="appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="otp" type="text" pattern="[0-9]{6}" maxlength="6" required>
+        </div>
+        <div class="flex items-center justify-between">
+          <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit">
+            Verify OTP
+          </button>
+        </div>
+      </form>
+      <div class="bg-gray-300 h-2 rounded-lg overflow-hidden">
+        <div class="bg-green-500 h-full" style="width: 100%;" id="progress"></div>
+      </div>
+      <script>
+        var progress = document.getElementById("progress");
+
+        function startTimer(duration, element) {
+          var timer = duration, minutes, seconds;
+          setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            element.style.width = (timer / duration) * 100 + "%";
+
+            if (--timer < 0) {
+              timer = duration;
+            }
+          }, 1000);
+        }
+
+        window.onload = function () {
+          var timeLimit = 150; // 4 minutes 30 seconds
+          startTimer(timeLimit, progress);
+        };
+      </script>
+      <p class="text-center text-gray-500 text-xs mt-2">
+        Time remaining: <span class="countdown">2:30</span>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

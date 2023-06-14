@@ -1,0 +1,123 @@
+.marginRemove{
+    list-style: none;
+    margin-left: 1.2rem;
+    font-size: 12px;
+}
+#underLine{
+    border-bottom: 1px solid #000;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(17, 145, 230) !important;
+     /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red !important;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: red !important;
+  }
+  .ml-49{
+   justify-content: center;
+   /* text-align: center; */
+   margin-left: 0.1rem;
+  
+  }
+  .coupncode{
+    background-color:#fcfcfc;
+    /* color: white; */
+    width: 11rem;
+    height: 3rem;
+    border: 1px solid black;
+    border-radius: 6px;
+    text-align: center;
+    font-size: medium;
+
+  }
+ 
+  .Applybtn{
+    border: 1px solid rgb(45, 40, 40);
+    background-color: green;
+    color: white;
+    height: 3rem;
+    padding: 0.2rem;
+    margin: 0.11rem;
+    border-radius: 5px;
+    width: 4rem;
+  }
+   .Applybtn:hover{
+    border: 1px solid rgb(45, 40, 40);
+    background-color: rgb(28, 148, 28) !important;
+    color: white;
+    
+  }
+  #textCop{
+    margin-right: 10rem;
+  } 
+  #textCop1{
+    /* margin-right: 5rem; */
+    font-size: 1.3rem;
+   
+  }
+  #NetPAy{
+    display: flex;
+    flex-direction: column;
+  }
+  @media only screen and (max-width: 480px) {
+    .coupncode{
+      background-color:#fcfcfc;
+      /* color: white; */
+      width: 9rem;
+      height: 2rem;
+      border: 1px solid black;
+      border-radius: 4px;
+      text-align: center;
+      font-size: large;
+  
+    }
+    .removeBTN{
+      padding-top: 0.15rem;
+        padding-bottom: 0.15rem;
+    
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    
+    }
+    .ADDbtn{
+      width: 2.6rem;
+      padding-top: 0.18rem;
+    padding-bottom: 0.18rem;
+
+
+    padding-left: 0.25rem;
+    padding-right: 0.25rem
+    
+  }
+  .Applybtn{
+    border: 1px solid rgb(45, 40, 40);
+    background-color: green;
+    color: white;
+    height: 2rem;
+    padding: 0.1rem;
+    margin: 0.4rem;
+    border-radius: 5px;
+    width: 3rem;
+  }
+  .nameSZ{
+    margin-left: -2rem;
+    font-size: small;
+  }
+  
+}
+@media only screen and (max-width: 400px) {
+  .removeBTN{
+    font-size: small;
+    width: fit-content;
+  }
+  .flex400{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}

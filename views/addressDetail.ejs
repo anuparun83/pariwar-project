@@ -1,0 +1,39 @@
+<%- include("header") -%>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="style/myaccount.css" rel="stylesheet"> 
+<link rel="stylesheet" href="/style/header.css">
+    <link rel="stylesheet" href="/style/footer.css">
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+    .mt8{
+        margin-top: 7rem;
+    }
+</style>
+
+<body class="bg-gray-100">
+    
+    <main class="container mx-auto py-8 mt8">
+        <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8">
+            <h1 class="text-3xl text-center text-gray-800 font-semibold mb-6">Delivery Address</h1>
+           
+            <div class="mb-4">
+                <h2 class="text-lg text-gray-700 font-semibold mb-2">Shipping Address</h2>
+                <% data.forEach((shippingAddress) => { %>
+                <p class="text-gray-600">Name: <%= shippingAddress.name %></p>
+                <p class="text-gray-600">Phone No: <%= shippingAddress.mobileNo %></p>
+                <p class="text-gray-600">Address: <%= shippingAddress.address %></p>
+                <p class="text-gray-600">state: <%= shippingAddress.state %></p>
+                <p class="text-gray-600">city: <%= shippingAddress.city %>, Pin-code: <%= shippingAddress.pincode %></p>
+                <p class="text-gray-600">Country: <%= shippingAddress.country%></p>
+                <% }) %>
+            </div>
+            <div class="flex justify-between">
+                <a href="/addNewaddress" class="text-purple-500 hover:text-purple-600">Edit/Add Address Details</a>
+                <button class="btn btn-primary btnprod" type="submit">Deliver Here</button>
+            </div>
+        </div>
+    </main>
+</body>
+<%- include("footer") -%>
+</html>

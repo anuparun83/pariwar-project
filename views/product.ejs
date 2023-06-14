@@ -1,0 +1,137 @@
+<%- include("header") -%>
+
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style/product.css">
+<body>
+  
+
+  <!-- <main class="container mx-auto py-8 my-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-auto mt-4">
+      <% produc.forEach((product) => { %>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <div class="relative">
+            <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="w-full h-64 object-cover">
+            <div class="absolute top-0 right-0 p-2">
+              <span class="bg-gray-800 text-white text-sm px-2 py-1 rounded">New</span>
+            </div>
+          </div>
+          <div class="">
+             <h2 class="text-lg font-semibold mb-1"><%= product.name %></h2> -->
+            <!-- <p class="text-gray-700 text-sm"><%= product.description %></p> -->
+            <!-- <div class="flex items-center justify-between mt-4">
+              <span class="text-gray-600 font-semibold text-lg">$<%= product.price %></span>
+              <% if (!admin) { %>
+              <div class="flex items-center justify-between">
+                <form action="/deleteItem/<%= product._id %>" method="post" class="delForm">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="bg-black text-white font-semibold px-4 py-2 rounded focus:outline-none">Delete</button>
+                </form>
+                  
+                  <a href="/editPage/<%= product._id %>" class="bg-black text-white font-semibold px-4 py-2 rounded focus:outline-none">Edit Product</a>
+              </div>
+              <% } %>
+              <% if (admin) { %>
+              <div class="flex items-center justify-between">
+                <form action="/cart" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="id" value="<%=product._id %>">
+                    <button class="bg-black text-white font-semibold px-4 py-2 rounded focus:outline-none" type="submit">ADD TO CART</button>
+                  </form>
+                  <a href="/product/<%= product._id %>" class="bg-black text-white font-semibold px-4 py-2 rounded focus:outline-none">Detail</a>
+                       -->
+                <!-- <button class="bg-gray-200 text-gray-800 font-semibold px-4 py-2 rounded focus:outline-none"
+                  onclick="addToWishlist('<%= product.id %>')">Add to Wishlist</button> -->
+              <!-- </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div> -->
+  <!-- </main>  -->
+
+  <section class="trending-product" id="trending">
+    <div class="center-text">
+        <h2>Our Trending <span>products</span></h2>
+    </div>
+
+    <div class="products">
+        <% produc.forEach(function(product) { %>
+        <div class="row">
+            <img src="<%= product.imageUrl %>" alt="">
+            <%if((Math.floor(Math.random() * (10-3+1)) + 3)==(Math.floor(Math.random() * (9-3+1)) + 3)){%>
+              <div class="_220jKJ" style="background: rgb(0, 160, 152);">Bestseller</div>
+              <% } else if((Math.floor(Math.random() * 310) + 21)/21<=10){ %>  
+            <div class="product-text">
+                <h5>sale</h5>
+            </div>
+            <% } else if((Math.floor(Math.random() * 310) + 21)/20>=14){ %> 
+              <div class="product-text">
+                <h5>New</h5>
+            </div>
+            <% } %>
+            <div class="heart-icon">
+                <i class='bx bx-heart'></i>
+            </div>
+            <div class="ratting">
+                <% for (var i = 0; i < ((Math.floor(Math.random() * (4-3+1)) + 3)); i++) { %>
+                <i  class='fa fa-star '></i>
+                <% } %>
+                <i class='bx bxs-star-half' ></i>
+            </div>
+
+            <div class="price">
+                <div class="deldeT">
+                  <h4><%= product.name %></h4>
+                  <%if(admin){%>
+                  <form action="/deleteItem/<%= product._id %>" method="post" class="delForm">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="flex"><i class="fa fa-trash flex space-x-2 mr-1 HOVExtra" style="color: red;"></i></button>
+                  </form>
+                  <%}%>
+                  <%if(!admin){%>
+                  <a href="/product/<%= product._id %>" class="FLEXleft HOVExtra">detail</a>
+                  <%}%>
+                </div> 
+                <div class="editCART">
+                  <div class="flex items-center space-x-2 mb-2">
+                    <span class="text-lg font-bold text-black-500" id>₹<%=(product.price)-(product.price*(.22)).toFixed(0) %></span>
+                    <span class="text-lg font-midbold text-gray-500" id="lineTHr">₹<%= product.price %></span>
+                  </div>
+                  <%if(!admin){%>
+                  <form action="/cart" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="id" value="<%=product._id %>">
+                    <button class=" HOVExtra " type="submit">Add <i class=" fa fa-shopping-cart HOVExtra"></i></button>
+                  </form>
+                  <%}%>
+                  <%if(admin){%>
+                    <a href="/editPage/<%= product._id %>" class="HOVExtra">Edit Product</a>
+                  <%}%>
+                </div>   
+            </div>
+        </div>
+        <% }); %>
+    </div>
+ </section>
+
+ <script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+      const rows = document.querySelectorAll('.products .row');
+      rows.forEach((row, index) => {
+          setTimeout(() => {
+              row.classList.add('show');
+          }, index * 200); // Delay each row's transition by 200 milliseconds
+      });
+  });
+</script>
+
+
+
+  <!-- <script></script> -->
+</body>
+<%- include("footer") -%>
+</html>  

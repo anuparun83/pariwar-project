@@ -1,0 +1,57 @@
+<%- include("header") -%>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="style/addNewaddress.css" rel="stylesheet">
+
+<body class="bg-whitesmoke-100 margTP">
+    
+    <main class="container mx-auto py-8 ">
+        <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8 newADDbox">
+            <h1 class="text-3xl text-center text-gray-800 font-semibold mb-6">Add New Address</h1>
+            <form action = "/postNewAddress" method = "post" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+                <div class="mb-4">
+                    <label for="full-name" class="text-gray-700 text-sm">Full Name</label>
+                    <input type="text" id="name" name="name" class="w-full bg-gray-100 rounded-md px-4 py-2 focus:outline-none" placeholder="Enter your full name" required="">
+                </div>
+                <div class="mb-4">
+                    <label for="address" class="text-gray-700 text-sm">Address</label>
+                    <input type="text" id="address" name="address" class="w-full bg-gray-100 rounded-md px-4 py-2 focus:outline-none" placeholder="Enter your address" required="">
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="text-gray-700 text-sm">Phone Number</label>
+                    <input type="number" id="phoneno" name="phoneno" class="w-full bg-gray-100 rounded-md px-4 py-2 focus:outline-none" placeholder="Enter 10-digit phone number" required="">
+                </div>
+                <div class="mb-4">
+                    <label for="country" class="col-sm-2 control-label">Country</label>
+                    <select id="countryName" name="countryName" class="w-full bg-gray-100 rounded-md px-4 py-2 focus:outline-none" placeholder="Enter your state" required="">
+                        <% country.forEach((country) => { %>
+                          <option value="<%= country %>"><%= country %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="state" class="text-gray-700 text-sm">State</label>
+                    <select id="state" name="state" class="w-full bg-gray-100 rounded-md px-4 py-2 focus:outline-none" placeholder="Enter your state" required="">
+                        <% state.forEach((country) => { %>
+                          <option value="<%= country %>"><%= country %></option>
+                        <% }) %>
+                      </select>
+                </div>
+                <div class="mb-4">
+                    <label for="city" class="text-gray-700 text-sm">City</label>
+                    <input type="text" id="city" name="city" class="w-full bg-gray-100 rounded-md px-4 py-2 focus:outline-none" placeholder="Enter your city" required="">
+                </div>
+                <div class="mb-4">
+                    <label for="code" class="text-gray-700 text-sm">Pin code</label>
+                    <input type="text" id="code" name="code" class="w-full bg-gray-100 rounded-md px-4 py-2 focus:outline-none" placeholder="Enter your Pin code" required="">
+                </div>
+                <button type="submit" class="w-full bg-purple-500 text-white py-3 px-6 rounded-md hover:bg-purple-600">Deliver Here</button>
+            </form>
+        </div>
+    </main>
+</body>
+<%- include("footer") -%>
+</html> 

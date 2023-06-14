@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href=
+  "https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          integrity=
+  "sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+          crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    span {
+      display: flex;
+      flex-direction: row;
+    }
+    span:before, span:after {
+      content: "";
+      flex: 1 1;
+      border-bottom: 1px solid;
+      margin: auto;
+    }
+    span:before {
+      margin-right: 10px;
+    }
+    span:after {
+      margin-left: 10px;
+    }
+    input, select {
+      border: 1px solid gray;
+      padding: 2px;
+      border-radius: 25px !important;
+      text-align: initial;
+    }
+    .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 0.75rem;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .error{
+    color: aliceblue;
+    
+  }
+  .error{
+  background: #c51244 !important;
+  padding: 3px !important;
+  border-radius: 2px !important;
+  position: relative; 
+  display: inline-block !important;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 4px;
+  font-size: 12px;
+  font-family: sans-serif;
+  /* height: 1rem; */
+}
+.error:before{
+  content: '';  
+  width: 0;  
+  height: 0;  
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #c51244;
+  position: absolute;  
+  top: -10px; 
+}
+.error:after{
+  color: #c51244 !important;
+}
+.error input{ 
+  background: #fff0f4; 
+  color: #c51244;
+}
+.error input{ 
+  border: 1px solid #c51244 !important; 
+}
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class=" row flex items-center justify-center h-screen">
+    <div class="bg-white rounded-lg shadow p-8 max-w-md w-full">
+      <h2 class="text-2xl font-bold mb-4">Sign Up</h2>
+      <form method="post" action="/sign-up">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="mb-4">
+          <label for="fullName" class="block font-semibold text-gray-700">Name</label>
+          <input type="text" id="fullName" name="fullName" class="w-full rounded border-gray-300 focus:border-purple-500 focus:ring-purple-500" placeholder="Enter your name">
+        </div>
+        <% if (error===0) { %>
+          <p class="error" >Name canot be empty</p>
+        <% } %>
+        <div class="mb-4">
+          <label for="email" class="block font-semibold text-gray-700">Email</label>
+          <input type="email" id="email" name="email" class="w-full rounded border-gray-300 focus:border-purple-500 focus:ring-purple-500" placeholder="Enter your email">
+        </div>
+        <% if (error===1) { %>
+          <p class="error" >Invalid Email verify your email </p>
+        <% } %>
+        <div class="mb-4">
+          <label for="email" class="block font-semibold text-gray-700">Number</label>
+          <input type="number" id="mobileNo" name="mobileNo" class="w-full rounded border-gray-300 focus:border-purple-500 focus:ring-purple-500" placeholder="Enter your Phone number">
+        </div>
+        <% if (error===2) { %>
+          <p class="error" >Phone number must be 10-digit long</p>
+        <% } %>
+        <div class="mb-4">
+          <label for="gender" class="block font-semibold text-gray-700">Gender</label>
+          <select id="gender" name="gender" class="w-full rounded border-gray-300 focus:border-purple-500 focus:ring-purple-500">
+            <option value="" disabled selected>--Select your gender--</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="transgender">Transgender</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block font-semibold text-gray-700">Password</label>
+          <div class="relative">
+            <input type="password" id="password" name="password" class="w-full rounded border-gray-300 focus:border-purple-500 focus:ring-purple-500" placeholder="Enter your password">
+            <i id="toggleIcon" class="password-toggle fas fa-eye cursor-pointer" onclick="togglePassword()"></i>
+          </div>
+        </div>
+        <% if (error===3) { %>
+          <p class="error" >Password must be six digit Long with a special character</p>
+        <% } %>
+        <div class="mb-4">
+          <label for="confirmPassword" class="block font-semibold text-gray-700">Confirm Password</label>
+          <div class="relative">
+            <input type="password" id="confirmPassword" name="confirmPassword" class="w-full rounded border-gray-300 focus:border-purple-500 focus:ring-purple-500" placeholder="Confirm your password">
+            <i id="toggleIcon" class="password-toggle fas fa-eye cursor-pointer" onclick="togglePassword()"></i>
+          </div>
+        </div>
+        <% if (error===4) { %>
+          <p class="error" >Password and Confirm password doesn't match</p>
+        <% } %>
+        <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-2 px-4 rounded hover:bg-purple-700">Sign Up</button>
+      </form>
+      <div class="mt-4 text-center">
+        <p>Already have an account? <a href="/login" class="text-purple-600 font-semibold">Login</a></p>
+      </div>
+      <div class="mt-2 text-center">
+        <p><span> sign up with:</span></p>
+        <button class="mt-2 bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700">Sign Up with Google</button>
+        <button class="mt-2 bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">Sign Up with Facebook</button>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <a class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
+            <i class="fab fa-google"></i>
+            Sign Up with Google
+          </a>
+        </div>
+    
+      </div>
+    </div>
+  </div>
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      const confirmPasswordInput = document.getElementById("confirmPassword");
+      const toggleIcons = document.getElementsByClassName("password-toggle");
+      
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        confirmPasswordInput.type = "text";
+        for (let i = 0; i < toggleIcons.length; i++) {
+          toggleIcons[i].classList.remove("fa-eye");
+          toggleIcons[i].classList.add("fa-eye-slash");
+        }
+      } else {
+        passwordInput.type = "password";
+        confirmPasswordInput.type = "password";
+        for (let i = 0; i < toggleIcons.length; i++) {
+          toggleIcons[i].classList.remove("fa-eye-slash");
+          toggleIcons[i].classList.add("fa-eye");
+        }
+      }
+    }
+  </script>
+</body>
+</html>

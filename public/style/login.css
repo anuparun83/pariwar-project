@@ -1,0 +1,91 @@
+
+  /* @import url('https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@100&family=Fira+Sans:wght@300&family=Roboto+Condensed:ital@1&family=Roboto+Mono:wght@100&family=Roboto:ital,wght@1,300&family=Sofia+Sans:wght@300&display=swap'); */
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@100&family=Fira+Sans:wght@300&family=Roboto+Condensed:ital@1&family=Roboto+Mono:wght@100&family=Roboto:ital,wght@1,300&family=Sofia+Sans:wght@300&display=swap');
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'); /* Replace with your desired background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.4s ease-out;
+}
+#HOVLInk:hover{
+text-decoration: underline !important;
+
+}
+#HOVLOGIN:hover{
+  background-color: #7133c3 !important;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 251, 241);
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+max-height: 560px;
+height: 100%;
+width: 100%;
+}
+
+.login-button{
+  width: 100%;
+  
+  
+}
+.login-button:hover{
+  background-color: #6d6c6d;
+  
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.capcH{
+  border: 1px solid #7d2ae8;
+  border-radius: 6px;
+  align-items: center;
+  text-align: center;
+  max-width: 160px;
+  gap: 2rem;
+}
+.coNcap{
+  background-image: url('https://png.pngtree.com/element_our/20200701/ourlarge/pngtree-black-dot-mesh-pattern-png-element-image_2278050.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: rgb(26, 24, 24);
+  /* color: rgb(156, 137, 137); */
+  margin-left: 2rem;
+  opacity: 0.9;
+  /* font-size: 1.1rem; */
+  font-weight: 800;
+  filter: blur(0.65px);
+  
+  
+
+}
+.fa-sync:hover{
+ cursor: pointer;
+ transform: rotate(180deg);
+ transition: all 0.3s ease-out;
+}

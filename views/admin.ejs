@@ -1,0 +1,65 @@
+<%- include("header") -%>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="style/myaccount.css" rel="stylesheet">
+
+  <body>
+
+    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 marGTP ">
+
+      <div class="bg-white p-8 rounded shadow-md max-w-md w-full width50">
+        <h1 class="text-2xl font-bold mb-6">Add Product | Admin Page</h1>
+        <form action="/admin" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <div class="mb-4">
+            <label for="name" class="block mb-2 font-medium">Product Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter the name of the product" required
+              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+          </div>
+          <div class="mb-4">
+            <label for="price" class="block mb-2 font-medium">Price</label>
+            <input type="number" id="price" name="price" placeholder="Enter the price of the product" required
+              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+          </div>
+          <div class="mb-4">
+            <label for="category" class="block mb-2 font-medium">Category For</label>
+            
+              <select id="category" name="category" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" placeholder="Enter category of product" required="">
+               
+                
+                <option value="small">All type</option>
+                <option value="arrivals">New arrival</option>
+                <option value="featured">Mens</option>
+                <option value="special">Womens</option>
+                <option value="seller">Kids</option>
+                
+              </select>  
+          </div>
+          <div class="mb-4">
+            <label for="fabric" class="block mb-2 font-medium">Fabric Type</label>
+            <input type="text" id="fabric" name="fabric" placeholder="Enter the fabric detail of the product" required
+              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+          </div>
+          <div class="mb-4">
+            <label for="description" class="block mb-2 font-medium">Description</label>
+            <textarea id="description" name="description" placeholder="Enter the description of the product" required
+              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"></textarea>
+          </div>
+          <div class="mb-4">
+            <label for="image" class="block mb-2 font-medium">Product Image</label>
+            <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png" required
+              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+          </div>
+          <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white font-medium rounded hover:bg-gray-500">
+            Add Product
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+
+
+  </body>
+  <%- include("footer") -%>
+
+    </html>

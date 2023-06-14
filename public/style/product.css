@@ -1,0 +1,185 @@
+section{
+    padding: 5% 10%;
+    border: whitesmoke;
+}
+body{
+    background-color: rgb(255, 251, 251);
+}
+.deldeT {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+}
+.editCART{
+    display: flex;
+    justify-content: space-between;
+}
+#lineTHr{
+    text-decoration: line-through;
+    font-size: 16px;
+}
+.bx-star{
+    color: #f08804;
+    
+}
+#trending{
+    margin-top: calc(40px);
+}
+
+.HOVExtra:hover{
+ color: #eb4d4b;
+ font-size: 16.8px;
+ text-decoration: underline;
+ transition: all 0s ease;;
+}
+.center-text h2{
+    color: #111;
+    font-size: 28px;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.center-text span{
+    color: #EE1C47;
+}
+.products{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    gap: 2rem;
+}
+.row{
+    position: relative;
+    transition: all .40s;
+}
+.row img{
+    width: 100%;
+    height: auto;
+    transition: all .40s;
+}
+.row img:hover{
+    transform: scale(0.9);
+}
+.product-text h5{
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #27b737;
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+.heart-icon{
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+}
+.heart-icon:hover{
+    color: #EE1C47;
+}
+.ratting i{
+    color: #FF8C00;
+    font-size: 18px;
+}
+.price h4{
+    color: #111;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+.price p{
+    color: #151515;
+    font-size: 14px;
+    font-weight: 600;
+}
+.client-reviews{
+    background-color: #F3F4F6;
+}
+.reviews{
+    text-align: center;
+}
+.reviews h3{
+    color: #111;
+    font-size: 25px;
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: 700;
+}
+.reviews img{
+    width: 100px;
+    height: auto;
+    border-radius: 50px;
+    margin: 10px 0;
+}
+.reviews p{
+    color: #707070;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.reviews h2{
+    font-size: 22px;
+    color: #000;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 2px;
+}
+
+._220jKJ {
+    top: 7px;
+    left: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: #fff;
+    padding: 0 8px;
+    border-radius: 2px;
+    /* animation: anim 7s infinite rotate(1turn); */
+    transform: rotateY(180deg);
+    animation-name: anim;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes anim {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+
+
+._220jKJ:hover {
+    animation-duration: 20000s;
+}
+._220jKJ, ._220jKJ:before {
+    position: absolute;
+    height: 20px;
+}
+._220jKJ:before {
+    content: "";
+    width: 22px;
+    background: rgb(206, 49, 49);
+    -webkit-filter: blur(6px);
+    filter: blur(6px);
+    top: 0;
+    left: -9px;
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+    -webkit-animation: vGD5Sd 1s linear 2ms 6 forwards;
+    animation:  1s linear 2ms 6 forwards;
+    opacity: 0;
+}
+._220jKJ, ._220jKJ:before {
+    position: absolute;
+    height: 20px;
+
+
+}

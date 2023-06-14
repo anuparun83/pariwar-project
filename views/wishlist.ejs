@@ -1,0 +1,99 @@
+<%- include("header") -%>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style/wishlist.css">
+
+
+<body>
+   
+    <div class="bg-gray-100 min-h-screen wishMG">
+        <!-- Navbar -->
+        
+
+        <!-- Wishlist content -->
+        <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+            <h1 class="text-2xl font-semibold text-gray-800 mb-4">My Wishlist</h1>
+
+            <% if (wishlistItems.length> 0) { %>
+                <div class="grid   gap-8">
+                    <% wishlistItems.forEach((product)=> { %>
+                        <div class="bg-white shadow-md rounded-lg p-4  flex items-center justify-between puRA">
+                            <!-- Product details here -->
+
+                            <div class="flex items-center screenFLE">
+                                <div class="imageSC">
+                                    <img src="<%= product.imageUrl %>" id="imgscreen" alt="<%= product.title %>"
+                                    class="w-16 h-16 rounded widhimG">
+                                </div>
+                                <div class="flex flex-col ml-4">
+                                    <p style="color: #0cb815; font-weight: 700; font-size: 12px;">In stock</p>
+                                    <h2 class="text-lg font-semibold text-gray-800 ">
+                                        <%= product.name %>
+                                    </h2>
+                                    <div class="">
+
+                                        <span class="ratinG ml-1">
+                                            <%=((Math.floor(Math.random() * (4.7-3.9+1.0)) + 3.7))%><i
+                                                    class="fa fa-star ml-1"></i>
+                                        </span>
+                                        <span class="  ratCNT ">(<%=((Math.floor(Math.random() * (1200-200+1)) + 200))%>
+                                                )</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3 mt-1">
+                                        <div class="flex items-center ">
+                                        <i class="fa fa-inr mr-1"></i>
+                                        <span class="text-lg font-bold text-black-500" id>
+                                            <%=(product.price)-(product.price*(discount)).toFixed(0) %>
+                                        </span></div>
+                                         <div class="flex items-center lineTHr">
+                                            <i class="fa fa-inr lineTHr" style="font-weight: 10px;"></i>
+                                            <span class="text-lg font-midbold text-gray-500 mr-4 lineTHr" >
+                                                <%= product.price %>
+                                            </span>
+                                         </div>
+                                            <div class="flex dcoFF">
+                                              <span class="text-gray-500 " style="color:#0cb815; font-weight:13px">
+                                                <%=(discount*100).toFixed(0)%>
+                                               </span>
+                                               <span style="color:#0cb815; font-weight:13px">% off</span>
+                                            </div>
+                                    </div>
+                                    <!-- <span class="text-gray-700 font-semibold"><i class="fa fa-inr mr-1"></i><%= product.price %></span> -->
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-end ">
+                                <div class="flex flex-col justify-between btnDT">
+                                    <form action="/removeFromWishlist" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <input type="hidden" name="productId" value="<%= product._id %>">
+                                        <button><i class="fa fa-trash flex "></i></button>
+                                    </form>
+                                    
+                                    <form action="/cart" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <input type="hidden" name="id" value="<%= product._id %>">
+                                        
+                                            <button type="submit"
+                                            class=" text-white py-2 px-4 rounded-md mb-4 ml-2 cartBG"><i
+                                            class=" fa fa-shopping-cart "></i>Add to Cart</button>
+                                        
+                                    </form>
+                                    <!-- <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md">Remove</button> -->
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+                <% } else { %>
+                    <p class="text-lg text-gray-800">Your wishlist is empty.</p>
+                    <% } %>
+        </main>
+
+        
+        
+    </div>
+  
+</body>
+<%- include("footer") -%>
+</html>

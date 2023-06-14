@@ -1,0 +1,91 @@
+<!-- edit-profile.ejs -->
+
+<%- include("header") -%>
+<style>
+  .error{
+    color: aliceblue;
+    
+  }
+  .error{
+  background: #c51244 !important;
+  padding: 3px !important;
+  border-radius: 2px !important;
+  position: relative; 
+  display: inline-block !important;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 4px;
+  font-size: 12px;
+  font-family: sans-serif;
+  /* height: 1rem; */
+}
+.error:before{
+  content: '';  
+  width: 0;  
+  height: 0;  
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #c51244;
+  position: absolute;  
+  top: -10px; 
+}
+.error:after{
+  color: #c51244 !important;
+}
+.error input{ 
+  background: #fff0f4; 
+  color: #c51244;
+}
+.error input{ 
+  border: 1px solid #c51244 !important; 
+}
+
+</style>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="style/addNewaddress.css" rel="stylesheet"> 
+<body>
+  <div class="container mx-auto py-8 margTP">
+    <div class="max-w-md mx-auto bg-white p-8 border border-gray-300 rounded shadow width50">
+      <h1 class="text-2xl font-bold mb-6">Edit Profile</h1>
+
+      
+
+      <form action="/editProfile" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="hidden" name="id" value="">
+        
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
+          <input type="text" id="name" name="name" class="w-full border border-gray-300 rounded px-3 py-2" value="<%= name %>" >
+          <% if (error===1) { %>
+            <p class="error" >Name Can't be empty Plese Verify</p>
+          <% } %>
+          
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-bold mb-2">Email*</label>
+          <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded px-3 py-2" value="<%= email %>">
+          <% if (error===3) { %>
+            <p class="error" >Enter is required</p>
+          <% } %>
+          
+        </div>
+
+        <div class="mb-4">
+          <label for="pattern" class="block text-gray-700 font-bold mb-2">Number*</label>
+          <input type="number" id="phoneNo" name="phoneNo" class="w-full border border-gray-300 rounded px-3 py-2" value="<%=phoneNo%>" placeholder="enter 10-digit phone number">
+          <% if (error===2) { %>
+            <p class="error" >Mobile number must be 10 digit long</p>
+          <% } %>
+          
+        </div>
+
+        <div class="mb-6">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+<%- include("footer") -%>
+</html>

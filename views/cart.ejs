@@ -1,0 +1,119 @@
+<=<%- include("header") -%>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="style/cart.css" rel="stylesheet">
+  <style>
+    .FLEXleft{
+       padding-bottom: 2rem;
+        margin-left: 0.1rem;
+        color: rgb(157, 85, 225);
+    }
+  </style>
+<body>
+    <div class="bg-gray-100 min-h-screen">
+        <div class="container mx-auto py-12">
+            <div class="bg-white rounded shadow-lg p-8">
+                <h1 class="text-3xl font-bold mb-6">Your Cart</h1>
+                
+                <% if (cartItems.length === 0) { %>
+                    <p>Your cart is empty.</p>
+                <% } else { %>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full table-auto">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Product</th>
+                                    <th class="text-left">Quantity</th>
+                                    <th class="text-left">Price</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% cartItems.forEach((item) => { %>
+                                  
+                                    <tr class="" id="underLine">
+                                        <td class="py-4">
+                                            <div class="flex items-center">
+                                                <img src="<%= item.imageUrl %>" alt="<%= item.title %>" class="w-16 h-16 rounded">
+                                                <div class="col-md-3">
+                                                  
+                                                  <ul class="companyInfo">
+                                                    <li class="marginRemove">
+                                                      Colour: 
+                                                    </li>
+                                                    <li class="marginRemove">
+                                                      Size:
+                                                    </li>
+                                                    <li class="marginRemove">
+                                                        <form action="/addToWishlist" method="post">
+                                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                            <input type="hidden" name="id" value="<%= item._id %>">
+                                                            
+                                                            <button  type="submit" style="color:#00acee">Add to WishList</button>
+                                                        </form>
+                                                    </li>
+                                                    <li class="marginRemove">
+                                                        <a href="/product/<%= item._id %>" class="FLEXleft HOVExtra "><i class='far fa-eye' ></i>&nbsp;detail</a>
+
+                                                    </li>
+                                                  </ul>
+                                                </div>
+                                              </div>
+                                              <span class="ml-4 ml-49" style="color:#ff9500;font-weight: 650;"><%= item.name %></span>
+                                        </td>
+                                        <td class="py-4">
+                                          <input type="number" min="1" max="20" class="border border-gray-300 rounded px-2 py-1 w-16 ADDbtn"  placeholder="Add" value="<%= item.quantity %>">
+                                        </td>
+                                     <div class="flex400">
+                                            <td class="py-4 nameSZ">$<%= item.price %></td>
+                                            <td class="py-4">
+
+                                                <form action="/removeFromCart" method="post">
+                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                    <input type="hidden" name="productId" value="<%= item._id %>">
+                                                    <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded removeBTN">Remove</button>
+                                                </form>
+                                            </td>
+                                     </div> 
+                                    </tr>
+                                   
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } %>
+                
+                <div class="mt-8">
+                    <div class="flex justify-between items-center">
+                        <p class="text-lg font-semibold">Subtotal:</p>
+                        <p class="text-2xl font-bold">$500.00</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p class="text-lg font-semibold">Sales Taxes:</p>
+                        <p class="text-2xl font-bold">$10.18</p>
+                    </div>
+                    <p class="flex justify-end " id="textCop">Enter coupn </p>
+                    <div class="flex justify-end items-center" id="coupnCODE">
+                      <input type="password" id="password" name="password" class="coupncode" placeholder="Enter coupn code">
+                      <button class="bg-red-500 hover:bg-green-600 text-white py-1 px-4 rounded Applybtn">Apply</button>
+                      <!-- <p class="text-2xl font-bold">$10.18</p> -->
+                    </div>
+                    <div class="flex justify-end items-center ">
+                        <p class="text-lg font-semibold">Saved Amount:</p>
+                        <p class="text-2xl font-bold">$500.00</p>
+                    </div>
+                    <div class="flex justify-end items-center">
+                        <p class="text-lg font-semibold">Tottal payable:</p>
+                        <p class="text-2xl font-bold">$10.18</p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">Proceed to Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include("footer") -%>
+</html>

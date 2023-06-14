@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariwar</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- custom css file link  -->
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="style/index1.css">
+    <style>
+        .notification-count {
+  position: absolute;
+  top: 19.2%;
+  right: 14.4%;
+  background-color: #ff9f00;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  line-height: 18px;
+}
+
+@media (min-device-width: 2901px){
+  .notification-count {
+    top: 22%;
+    right: 11.7%
+}
+}
+@media (min-device-width: 2521px) and (max-device-width: 2900px) {
+  .notification-count {
+    top: 22%;
+    right: 12.4%
+}
+}
+@media (min-device-width: 2061px) and (max-device-width: 2520px) {
+  .notification-count {
+    top: 22%;
+    right: 13%;
+   
+}
+}
+@media (min-device-width: 1861px) and (max-device-width: 2060px) {
+  .notification-count {
+    top: 22%;
+    right: 13.5%;
+   
+}
+}
+@media (min-device-width: 1321px) and (max-device-width: 1860px) {
+  .notification-count {
+    top: 22%;
+    right: 15%;
+   
+}
+}
+@media (min-device-width: 991px) and (max-device-width: 1320px) {
+  .notification-count {
+    top: 22%;
+    right: 17.5%;
+    width: 14px;
+    height: 14px;
+}
+}
+@media (min-device-width: 951px) and (max-device-width: 990px) {
+  .notification-count {
+    top: 19%;
+    right: 12%;
+    width: 14px;
+  height: 14px;
+  }
+}
+@media (min-device-width: 751px) and (max-device-width: 950px) {
+  .notification-count {
+    top: 19%;
+    right: 12%;
+    width: 14px;
+  height: 14px;
+  }
+}
+@media only screen and (min-device-width: 580px) and (max-device-width: 750px) {
+  .notification-count {
+    top: 20.9%;
+    right: 15%;
+    width: 14px;
+    height: 14px;
+}
+}
+@media only screen and (min-device-width: 481px) and (max-device-width: 581px) {
+  .notification-count {
+    top: 20.5%;
+    right: 18.5%;
+    width: 14px;
+    height: 14px;
+}
+
+
+}
+ 
+
+@media only screen and (min-device-width: 281px) and (max-device-width: 480px) {
+  .notification-count {
+    width: 14px;
+    height: 14px;
+    top: 21.8%;
+    right: 20.6%;
+  }
+  
+  
+}
+@media (max-width: 282px) {
+  .notification-count {
+    width: 14px;
+    height: 14px;
+    top: 21.8%;
+    right: 4.6%;
+  }
+}
+
+.KK-o3G {
+    
+    position: absolute;
+    left: 11px;
+    top: 7px;
+    text-align: center;
+    border-radius: 7px;
+    width: 18px;
+    height: 18px;
+    background-color: #ff6161;
+    border: 1px solid #fff;
+    font-weight: 400;
+    color: #f0f0f0;
+    line-height: 16px;
+    font-size: 12px;
+}
+
+    </style>
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a href="/" class="logo"> <i style="color:#1E3050 ;" class="fas fa-crown"></i> Pariwar.com </a>
+    
+  
+    <nav class="navbar ">
+    
+
+        <a href="/">home</a>
+        <a href="/product">products</a>
+        <% if (isLoggedIn) { %>
+        <% if (admin) { %>   
+         <a href="/admin">Add product</a>
+        <% } %>
+        <% } %>
+        <a href="#contact">contact</a>
+        <a href="#blogs">blogs</a>
+        <% if (!isLoggedIn) { %>
+            <a href="/login"><i style="color:rgb(109, 107, 107);" class="fa fa-sign-in"></i>&nbspLogin</a>
+        <% } %>
+       
+        <% if(isLoggedIn){ %>
+
+            <div class="dropdown">
+                <button class="dropbtn">My Account &nbsp;<i style="color:rgb(89, 88, 88) ;" class="fa fa-angle-down"></i>&nbsp;</button>
+                <div class="dropdown-content">
+                  <a href="/myaccount" >&#128526&nbsp<%=fname%></a>
+                  <a href="/wishlist"> <i class='bx bx-heart'></i>&nbsp;Wishlist</a>
+                  <a href="/cart"><i class='bx bx-cart' ></i>&nbsp;</i>Cart</a>
+                  <a href="/orders"><i class="fa fa-shopping-bag"></i>&nbsp;&nbsp;Order</a>
+                  <a href="/pluscoin"><i class='fas fa-wallet'></i>&nbsp;&nbsp;Vallet</a>
+                  <a href="/myaccount"><i class='bx bx-user' ></i>&nbsp;Account</a>
+                  <a href="/myaddress"><i class="fa fa-map-marker"></i>&nbsp;Address</a>
+                  <form method="post" action="/logout">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="Logot" type="submit">Logout<i class="fa fa-sign-out"></i></button>
+                    
+                  </form>
+                </div>
+              </div>
+            
+        
+        <%}%>
+    </nav>
+  
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search" style="color: rgb(211, 211, 211); font-weight:1000;"></div>
+        
+        <a href="/Cart" class="fas fa-shopping-cart flex">
+          
+          <% if (isLoggedIn) { %>
+            
+            <span class="notification-count"><%=cartlength%></span>
+          <% } %>
+          <% if (!isLoggedIn) { %>
+            
+            <span class="notification-count">0</span>
+          <% } %>
+           
+        </a>
+      
+        
+        <a href="/wishlist" class="fas fa-heart"></a>
+        <a href="/myaccount" class="fas fa-user" style="color:#1E3250 ;"></a>
+    </div>
+
+    <form action="" class="search-form">
+        <input type="search" name="" placeholder="search here..." id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+    

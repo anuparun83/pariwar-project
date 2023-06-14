@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/footer.css">
+        
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- custom css file link  -->
+    <!-- ===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+     <style>
+        @media screen and (min-width: 1250px) {
+        #navLogo2{
+        margin-left: -8rem !important;
+    }
+    #iconShift{
+        margin-right: -7rem;
+    }
+
+}
+     </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <span class="logo navLogo" id="navLogo2"> <a href="/" class="logo" style="color: #130f40;"> <i class="fas  fa-crown" style="color: #1E3050;"></i> Pariwar.com </a></span>
+           
+
+            
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"> <a href="/" class="logo"> <i class="fas fa-crown"></i> Pariwar.com </a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/product">products</a></li>
+                    <li>
+                        <% if (isLoggedIn) { %>
+                            <% if (admin) { %>   
+                             <a href="/admin">Add product</a>
+                            <% } %>
+                            <% } %>
+                    </li>
+                    <li><a href="#contact">contact</a></li>
+                    <li><a href="/">BLog</a></li>
+                    <li><% if (!isLoggedIn) { %>
+                        <a href="/login">Signin</a>
+                    <% } %></li>
+                    <% if(isLoggedIn){ %>
+
+                        <div class="dropdown">
+                            <button class="dropbtn">My Account &nbsp<i class="fa fa-angle-down"></i></button>
+                            <div class="dropdown-content">
+                              <a href="/myaccount">&#128526&nbsp;<%=fname%></a>
+                              <a href="/wishlist"><i class='bx bx-heart'></i>&nbsp;Wishlist</a>
+                              <a href="/cart"><i class='bx bx-cart' ></i>&nbsp;</i>Cart</a>
+                              <a href="/orders"><i class="fa fa-shopping-bag"></i>&nbsp;Order</a>
+                              <a href="/pluscoin"><i class='fas fa-wallet'></i>&nbsp;Vallet</a>
+                              <a href="/myaddress"><i class="fa fa-map-marker"></i>&nbsp;Address</a>
+                              <a href="/myaccount"> <i class='bx bx-user'></i>&nbsp;Account</a>
+                              <form method="post" action="/logout">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="Logot" type="submit">Logout<i class="fa fa-sign-out"></i></button>
+                                
+                              </form>
+                            </div>
+                          </div>
+                        
+                    
+                    <%}%>
+                </ul>
+                
+            </div>
+            <div class="darkLight-searchBox" id="iconShift">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
+                </div>
+
+                <div class="searchBox">
+                   <div class="searchToggle">
+                    <i class='bx bx-x cancel'></i>
+                    <i class='bx bx-search search'></i>
+                </div>
+
+                
+                    
+                    
+                
+
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
+                    </div>
+                </div>
+                <a href="/Cart" class="fas fa-shopping-cart "></a>
+                <a href="/wishlist" class="fas fa-heart"></a>
+                <a href="/myaccount" class="fas fa-user"></a>
+            </div>
+        </div>
+    </nav>
+
+
+
+</body>
+</html>
