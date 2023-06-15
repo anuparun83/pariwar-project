@@ -121,7 +121,7 @@
                 <div class="price">
                     <div class="amount">₹ <%=(product.price)-(product.price*(.22)).toFixed(0) %></div>
                     <div class="cut">₹<%= product.price %></div>
-                    <div class="offer">23% off</div>
+                    <div class="offer"><%= (Math.floor(Math.random() * 4) + 19)%>% off</div>
                 </div>
                 <div class="stars">
                     
