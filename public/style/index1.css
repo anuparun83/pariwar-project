@@ -240,7 +240,10 @@ section {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
-
+#rotateanglE:hover{
+  transform: rotate(180deg);
+  transition: all 0.1s ease-out;
+}
 .banner-container .banner {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 42rem;

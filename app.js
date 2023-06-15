@@ -11,7 +11,8 @@ const Product = require('./models/product');
 const User = require('./models/user');
 
 // package to define the session and maintain the cross site forgery
-const MONGODB_URI ="mongodb+srv://anuparun81:mongodB@cluster0.8gy6271.mongodb.net/flipkart";const session = require('express-session');
+const MONGODB_URI =process.env.MONGO_URL;
+const session = require('express-session');
 const MongoDbStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const csrfProtection = csrf();

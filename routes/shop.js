@@ -30,13 +30,13 @@ router.get('/product/:id', shopController.details);
 
 
 router.post('/removeFromCart', shopController.removeFromCart)
-router.post('/cart', shopController.addToCart)
+router.post('/cart',isAuth, shopController.addToCart)
 router.post('/admin', shopController.postAdminProd);
-router.post('/postNewAddress', shopController.postNewAddress)
+router.post('/postNewAddress',isAuth, shopController.postNewAddress)
 router.post('/deleteItem/:prodId', shopController.postDeleteProduct);
 router.post('/editPage', shopController.postEditPage);
 router.post('/editProfile', shopController.postEditProfile);
-router.post('/addToWishlist', shopController.addToWishlist);
+router.post('/addToWishlist',isAuth, shopController.addToWishlist);
 router.post('/removeFromWishlist', shopController.removeFromwishlist);
 
 module.exports = router

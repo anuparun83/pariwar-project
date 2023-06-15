@@ -48,6 +48,7 @@ exports.home = (req, res) => {
     })
 }
 exports.details = async (req, res) => {
+    if(req.user){
    console.log(req.user._id)
     let flag = false;
     const productId = req.params.id;
@@ -72,6 +73,14 @@ exports.details = async (req, res) => {
         // res.render('product_details', { product: product, fname: fname, flag: flag,relatedProducts:relatedProducts })
         // })
     })
+   }
+   else{
+    Product.findOne({ _id: req.params.id }).then( ( product) => {
+       
+       let isProductInWishlist =false ,fname='';
+        res.render('product_details', { product: product, fname: fname,  isProductInWishlist :isProductInWishlist })
+    })
+   }
 }
 
 

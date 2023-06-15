@@ -129,7 +129,7 @@
           <label for="confirmPassword" class="block font-semibold text-gray-700">Confirm Password</label>
           <div class="relative">
             <input type="password" id="confirmPassword" name="confirmPassword" class="w-full rounded border-gray-300 focus:border-purple-500 focus:ring-purple-500" placeholder="Confirm your password">
-            <i id="toggleIcon" class="password-toggle fas fa-eye cursor-pointer" onclick="togglePassword()"></i>
+           
           </div>
         </div>
         <% if (error===4) { %>
@@ -140,23 +140,9 @@
       <div class="mt-4 text-center">
         <p>Already have an account? <a href="/login" class="text-purple-600 font-semibold">Login</a></p>
       </div>
-      <div class="mt-2 text-center">
-        <p><span> sign up with:</span></p>
-        <button class="mt-2 bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700">Sign Up with Google</button>
-        <button class="mt-2 bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">Sign Up with Facebook</button>
-      </div>
+      
     </div>
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-          <a class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign Up with Google
-          </a>
-        </div>
-    
-      </div>
-    </div>
+   
   </div>
   <script>
     function togglePassword() {

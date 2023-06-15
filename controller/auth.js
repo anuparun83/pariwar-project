@@ -199,7 +199,7 @@ exports.postLogin = (req, res, next) => {
                 console.log('login successfully');
                 req.session.isLoggedIn = true;
                 req.session.user = currUser;
-                if (email === 'anuparun81@gmail.com') {
+                if (email === 'abc123@gmail.com') {
                     console.log('admon ghusa ');
                     req.session.admin = true;
                 }
